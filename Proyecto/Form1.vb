@@ -9,6 +9,7 @@ Public Class Form1
             MessageBox.Show("Por favor, completa todos los campos.")
             Exit Sub
         End If
+        'hola mundo' 
 
         Try
 
