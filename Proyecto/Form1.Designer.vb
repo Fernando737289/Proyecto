@@ -36,7 +36,7 @@ Partial Class Form1
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 12F)
+        Label1.Font = New Font("Segoe UI", 12.0F)
         Label1.Location = New Point(348, 109)
         Label1.Name = "Label1"
         Label1.Size = New Size(61, 21)
@@ -46,7 +46,7 @@ Partial Class Form1
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 12F)
+        Label2.Font = New Font("Segoe UI", 12.0F)
         Label2.Location = New Point(348, 274)
         Label2.Name = "Label2"
         Label2.Size = New Size(92, 21)
@@ -83,7 +83,7 @@ Partial Class Form1
         ' PictureBox1
         ' 
         PictureBox1.BackColor = Color.Transparent
-        PictureBox1.Image = My.Resources.Resources.pngwing_com__1_
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
         PictureBox1.Location = New Point(77, 145)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(176, 191)
@@ -94,7 +94,7 @@ Partial Class Form1
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 20F)
+        Label3.Font = New Font("Segoe UI", 20.0F)
         Label3.Location = New Point(221, 38)
         Label3.Name = "Label3"
         Label3.Size = New Size(170, 37)
@@ -103,7 +103,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(648, 564)
         Controls.Add(Label3)
