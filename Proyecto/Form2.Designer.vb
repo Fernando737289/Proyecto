@@ -48,7 +48,7 @@ Partial Class Form2
         GroupBox1.Size = New Size(249, 486)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
-        GroupBox1.Text = "GroupBox1"
+        GroupBox1.Text = "Menu"
         ' 
         ' Button6
         ' 
