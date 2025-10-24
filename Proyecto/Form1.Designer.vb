@@ -81,7 +81,7 @@ Partial Class Form1
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "Form1"
-        Text = "Form1"
+        Text = "Login"
         ResumeLayout(False)
         PerformLayout()
     End Sub
