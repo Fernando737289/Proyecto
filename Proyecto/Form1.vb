@@ -13,7 +13,7 @@ Public Class Form1
 
         Try
 
-            Dim conexion As MySqlConnection = Class1.ObtenerConexion()
+            Dim conexion As MySqlConnection = ConexionDB.ObtenerConexion()
 
             Dim query As String = "SELECT * FROM usuarios WHERE Correo = @correo AND Contraseña = @contrasena"
             Dim comando As New MySqlCommand(query, conexion)

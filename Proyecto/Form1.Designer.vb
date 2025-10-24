@@ -66,6 +66,7 @@ Partial Class Form1
         tfContra.Name = "tfContra"
         tfContra.Size = New Size(249, 23)
         tfContra.TabIndex = 3
+        tfContra.UseSystemPasswordChar = True
         ' 
         ' btIniciarSe
         ' 
