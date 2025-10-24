@@ -9,6 +9,7 @@ Public Class Form1
             MessageBox.Show("Por favor, completa todos los campos.")
             Exit Sub
         End If
+        'hola mundo' 
 
         Try
 
@@ -40,6 +41,14 @@ Public Class Form1
         Catch ex As Exception
             MessageBox.Show("Error al iniciar sesión: " & ex.Message)
         End Try
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = Color.Gray
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
     End Sub
 End Class
 
