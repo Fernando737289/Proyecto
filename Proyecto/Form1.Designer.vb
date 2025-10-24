@@ -83,7 +83,7 @@ Partial Class Form1
         ' PictureBox1
         ' 
         PictureBox1.BackColor = Color.Transparent
-        PictureBox1.Image = My.Resources.Resources.pngwing_com__1_
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
         PictureBox1.Location = New Point(77, 145)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(176, 191)
@@ -116,6 +116,7 @@ Partial Class Form1
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Form1"
         Text = "Login"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
