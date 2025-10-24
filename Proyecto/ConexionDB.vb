@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class Class1
+Public Class ConexionDB
     Private Shared conexion As MySqlConnection
 
     Public Shared Function ObtenerConexion() As MySqlConnection
