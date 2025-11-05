@@ -25,12 +25,15 @@ Public Class Form1
 
             If lector.Read() Then
                 Dim tipoUsuario As String = lector("Tipo").ToString()
+                Dim correoUsuario As String = lector("Correo").ToString()
                 lector.Close()
 
                 MessageBox.Show("Bienvenido, " & tipoUsuario & "!")
 
 
                 Dim menu As New Form2()
+                menu.TipoUsuario = tipoUsuario
+                menu.CorreoUsuario = correoUsuario
                 menu.Show()
                 Me.Hide()
             Else
@@ -38,9 +41,12 @@ Public Class Form1
                 MessageBox.Show("Correo o contraseña incorrectos.")
             End If
 
+
         Catch ex As Exception
             MessageBox.Show("Error al iniciar sesión: " & ex.Message)
         End Try
+
+
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

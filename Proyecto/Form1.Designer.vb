@@ -114,7 +114,10 @@ Partial Class Form1
         Controls.Add(Label2)
         Controls.Add(Label1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MaximizeBox = False
+        MinimizeBox = False
         Name = "Form1"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Login"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

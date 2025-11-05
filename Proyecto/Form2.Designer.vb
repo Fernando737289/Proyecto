@@ -28,9 +28,13 @@ Partial Class Form2
         Button4 = New Button()
         Button3 = New Button()
         Button2 = New Button()
-        Button1 = New Button()
+        GestionUsu = New Button()
         PictureBox1 = New PictureBox()
         BTNvolver = New Button()
+        Label1 = New Label()
+        lbCorreo = New Label()
+        lbTipo = New Label()
+        Label3 = New Label()
         GroupBox1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -42,8 +46,8 @@ Partial Class Form2
         GroupBox1.Controls.Add(Button4)
         GroupBox1.Controls.Add(Button3)
         GroupBox1.Controls.Add(Button2)
-        GroupBox1.Controls.Add(Button1)
-        GroupBox1.Location = New Point(50, 81)
+        GroupBox1.Controls.Add(GestionUsu)
+        GroupBox1.Location = New Point(38, 82)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(249, 486)
         GroupBox1.TabIndex = 0
@@ -95,19 +99,19 @@ Partial Class Form2
         Button2.Text = "Empleados"
         Button2.UseVisualStyleBackColor = True
         ' 
-        ' Button1
+        ' GestionUsu
         ' 
-        Button1.Location = New Point(87, 42)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(75, 23)
-        Button1.TabIndex = 0
-        Button1.Text = "Usuarios"
-        Button1.UseVisualStyleBackColor = True
+        GestionUsu.Location = New Point(87, 42)
+        GestionUsu.Name = "GestionUsu"
+        GestionUsu.Size = New Size(75, 23)
+        GestionUsu.TabIndex = 0
+        GestionUsu.Text = "Usuarios"
+        GestionUsu.UseVisualStyleBackColor = True
         ' 
         ' PictureBox1
         ' 
         PictureBox1.Image = My.Resources.Resources.Logo1
-        PictureBox1.Location = New Point(376, 221)
+        PictureBox1.Location = New Point(376, 286)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(198, 203)
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
@@ -116,35 +120,84 @@ Partial Class Form2
         ' 
         ' BTNvolver
         ' 
-        BTNvolver.Location = New Point(26, 18)
+        BTNvolver.Location = New Point(499, 613)
         BTNvolver.Name = "BTNvolver"
         BTNvolver.Size = New Size(75, 23)
         BTNvolver.TabIndex = 2
         BTNvolver.Text = "Volver "
         BTNvolver.UseVisualStyleBackColor = True
         ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(376, 62)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(69, 15)
+        Label1.TabIndex = 3
+        Label1.Text = "Bienvenido:"
+        ' 
+        ' lbCorreo
+        ' 
+        lbCorreo.AutoSize = True
+        lbCorreo.Location = New Point(476, 62)
+        lbCorreo.Name = "lbCorreo"
+        lbCorreo.Size = New Size(41, 15)
+        lbCorreo.TabIndex = 4
+        lbCorreo.Text = "Label2"
+        ' 
+        ' lbTipo
+        ' 
+        lbTipo.AutoSize = True
+        lbTipo.Location = New Point(476, 127)
+        lbTipo.Name = "lbTipo"
+        lbTipo.Size = New Size(41, 15)
+        lbTipo.TabIndex = 6
+        lbTipo.Text = "Label3"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(404, 123)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(33, 15)
+        Label3.TabIndex = 7
+        Label3.Text = "Tipo:"
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(671, 691)
+        Controls.Add(Label3)
+        Controls.Add(lbTipo)
+        Controls.Add(lbCorreo)
+        Controls.Add(Label1)
         Controls.Add(BTNvolver)
         Controls.Add(PictureBox1)
         Controls.Add(GroupBox1)
+        MaximizeBox = False
+        MinimizeBox = False
         Name = "Form2"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Menu"
         GroupBox1.ResumeLayout(False)
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents GestionUsu As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BTNvolver As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents lbCorreo As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lbTipo As Label
+    Friend WithEvents Label3 As Label
 End Class
