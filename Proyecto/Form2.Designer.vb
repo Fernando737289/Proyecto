@@ -25,7 +25,7 @@ Partial Class Form2
         GroupBox1 = New GroupBox()
         Button6 = New Button()
         Button5 = New Button()
-        Button4 = New Button()
+        InvRepuestos = New Button()
         Button3 = New Button()
         Button2 = New Button()
         GestionUsu = New Button()
@@ -43,7 +43,7 @@ Partial Class Form2
         ' 
         GroupBox1.Controls.Add(Button6)
         GroupBox1.Controls.Add(Button5)
-        GroupBox1.Controls.Add(Button4)
+        GroupBox1.Controls.Add(InvRepuestos)
         GroupBox1.Controls.Add(Button3)
         GroupBox1.Controls.Add(Button2)
         GroupBox1.Controls.Add(GestionUsu)
@@ -72,14 +72,14 @@ Partial Class Form2
         Button5.Text = "Servicios"
         Button5.UseVisualStyleBackColor = True
         ' 
-        ' Button4
+        ' InvRepuestos
         ' 
-        Button4.Location = New Point(87, 242)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(75, 23)
-        Button4.TabIndex = 3
-        Button4.Text = "Repuestos"
-        Button4.UseVisualStyleBackColor = True
+        InvRepuestos.Location = New Point(87, 242)
+        InvRepuestos.Name = "InvRepuestos"
+        InvRepuestos.Size = New Size(75, 23)
+        InvRepuestos.TabIndex = 3
+        InvRepuestos.Text = "Repuestos"
+        InvRepuestos.UseVisualStyleBackColor = True
         ' 
         ' Button3
         ' 
@@ -187,7 +187,7 @@ Partial Class Form2
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button4 As Button
+    Friend WithEvents InvRepuestos As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents GestionUsu As Button
