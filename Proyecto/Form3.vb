@@ -145,6 +145,13 @@ Public Class Form3
         Me.Hide()
     End Sub
 
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub tbVisuaUsu_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tbVisuaUsu.CellContentClick
+
+    End Sub
 End Class
 
 
