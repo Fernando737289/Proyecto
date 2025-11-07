@@ -49,13 +49,34 @@ Public Class Form4
 
 
     Private Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
+
+        If String.IsNullOrEmpty(tbDescripcion.Text) OrElse String.IsNullOrEmpty(tbCantidad.Text) OrElse String.IsNullOrEmpty(tbPrecio.Text) OrElse String.IsNullOrEmpty(tbProvedor.Text) Then
+            MessageBox.Show("Todos los campos son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+
         Dim precio As Decimal
         If Not Decimal.TryParse(tbPrecio.Text, precio) Then
             MessageBox.Show("Ingrese un precio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
+
         Try
+
             Dim conexion As MySqlConnection = ConexionDB.ObtenerConexion()
+            Dim queryDuplicado As String = "SELECT COUNT(*) FROM repuestos WHERE NombreRepuesto = @Nombre"
+            Dim comandoDuplicado As New MySqlCommand(queryDuplicado, conexion)
+            comandoDuplicado.Parameters.AddWithValue("@Nombre", tbDescripcion.Text)
+
+            Dim count As Integer = Convert.ToInt32(comandoDuplicado.ExecuteScalar())
+
+            If count > 0 Then
+                MessageBox.Show("Este repuesto ya existe en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+
             Dim query As String = "INSERT INTO repuestos (NombreRepuesto, CantidadStock, PrecioUnitario, Proveedor) VALUES (@Nombre, @Cantidad, @Precio, @Proveedor)"
             Dim comando As New MySqlCommand(query, conexion)
             comando.Parameters.AddWithValue("@Nombre", tbDescripcion.Text)
@@ -63,18 +84,22 @@ Public Class Form4
             comando.Parameters.AddWithValue("@Precio", precio)
             comando.Parameters.AddWithValue("@Proveedor", tbProvedor.Text)
             comando.ExecuteNonQuery()
+
             MessageBox.Show("Repuesto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LimpiarCampos()
+
         Catch ex As Exception
             MessageBox.Show("Error al agregar repuesto: " & ex.Message)
         End Try
     End Sub
 
     Private Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
-        If tbID.Text = "" Then
-            MessageBox.Show("Ingrese el ID del repuesto a modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If String.IsNullOrEmpty(tbID.Text) OrElse String.IsNullOrEmpty(tbDescripcion.Text) OrElse String.IsNullOrEmpty(tbCantidad.Text) OrElse String.IsNullOrEmpty(tbPrecio.Text) OrElse String.IsNullOrEmpty(tbProvedor.Text) Then
+            MessageBox.Show("Todos los campos son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
+
 
         Dim precio As Decimal
         If Not Decimal.TryParse(tbPrecio.Text, precio) Then
@@ -83,6 +108,7 @@ Public Class Form4
         End If
 
         Try
+
             Dim conexion As MySqlConnection = ConexionDB.ObtenerConexion()
             Dim query As String = "UPDATE repuestos SET NombreRepuesto=@Nombre, CantidadStock=@Cantidad, PrecioUnitario=@Precio, Proveedor=@Proveedor WHERE RepuestoID=@ID"
             Dim comando As New MySqlCommand(query, conexion)
@@ -92,25 +118,30 @@ Public Class Form4
             comando.Parameters.AddWithValue("@Proveedor", tbProvedor.Text)
             comando.Parameters.AddWithValue("@ID", tbID.Text)
             comando.ExecuteNonQuery()
+
             MessageBox.Show("Repuesto modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LimpiarCampos()
+
         Catch ex As Exception
             MessageBox.Show("Error al modificar repuesto: " & ex.Message)
         End Try
     End Sub
 
     Private Sub btEliminar_Click(sender As Object, e As EventArgs) Handles btEliminar.Click
-        If tbID.Text = "" Then
+        If String.IsNullOrEmpty(tbID.Text) Then
             MessageBox.Show("Ingrese el ID del repuesto a eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
+
         If MessageBox.Show("¿Seguro que desea eliminar este repuesto?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Try
+
                 Dim conexion As MySqlConnection = ConexionDB.ObtenerConexion()
                 Dim query As String = "DELETE FROM repuestos WHERE RepuestoID=@ID"
                 Dim comando As New MySqlCommand(query, conexion)
                 comando.Parameters.AddWithValue("@ID", tbID.Text)
                 comando.ExecuteNonQuery()
+
                 MessageBox.Show("Repuesto eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LimpiarCampos()
             Catch ex As Exception
@@ -119,9 +150,9 @@ Public Class Form4
         End If
     End Sub
 
+
     Private Sub cbIngreItem_CheckedChanged(sender As Object, e As EventArgs) Handles cbIngreItem.CheckedChanged
         btGuardar.Enabled = cbIngreItem.Checked
-        tbID.Enabled = Not cbIngreItem.Checked
     End Sub
 
     Private Sub cbModiItem_CheckedChanged(sender As Object, e As EventArgs) Handles cbModiItem.CheckedChanged
