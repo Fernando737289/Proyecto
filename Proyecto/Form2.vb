@@ -49,4 +49,13 @@ Public Class Form2
         Gestion.Show()
         Me.Hide()
     End Sub
+
+    Private Sub InvRepuestos_Click(sender As Object, e As EventArgs) Handles InvRepuestos.Click
+        Dim inventario As New Form4()
+        inventario.TipoUsuario = TipoUsuario
+        inventario.CorreoUsuario = CorreoUsuario
+        inventario.Show()
+        Me.Hide()
+    End Sub
+
 End Class
