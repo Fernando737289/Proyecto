@@ -65,6 +65,7 @@ Public Class Form3
         tbContraseña.Clear()
         tbTipo.Clear()
         rutSeleccionado = ""
+        tbVisuaUsu.DataSource = Nothing
     End Sub
 
     Private Sub cbIngreUsu_CheckedChanged(sender As Object, e As EventArgs) Handles cbIngreUsu.CheckedChanged

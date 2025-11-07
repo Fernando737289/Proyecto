@@ -311,8 +311,11 @@ Partial Class Form4
         Controls.Add(GroupBox1)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
+        MaximizeBox = False
+        MinimizeBox = False
         Name = "Form4"
-        Text = "Form4"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Gestion de Inventario"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
