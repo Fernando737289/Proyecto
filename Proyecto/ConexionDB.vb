@@ -6,7 +6,7 @@ Public Class ConexionDB
     Public Shared Function ObtenerConexion() As MySqlConnection
         Try
             If conexion Is Nothing Then
-                conexion = New MySqlConnection("server=127.0.0.1; database=taller; user id=root; password=;")
+                conexion = New MySqlConnection("server=192.168.1.12; database=taller; user id=root; password=root;")
             End If
 
             If conexion.State = ConnectionState.Closed Then

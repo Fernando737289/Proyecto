@@ -34,10 +34,8 @@ Partial Class Form3
         Label4 = New Label()
         Label1 = New Label()
         GroupBox2 = New GroupBox()
-        cbEliminarUsu = New CheckBox()
-        cbModiUsu = New CheckBox()
-        cbIngreUsu = New CheckBox()
-        tbTipo = New TextBox()
+        Label3 = New Label()
+        cbSeleccionar = New ComboBox()
         tbContraseña = New TextBox()
         tbCorreo = New TextBox()
         tbRut = New TextBox()
@@ -46,6 +44,7 @@ Partial Class Form3
         btEliminar = New Button()
         btVolver = New Button()
         PictureBox1 = New PictureBox()
+        cbTipo = New ComboBox()
         GroupBox1.SuspendLayout()
         CType(tbVisuaUsu, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox2.SuspendLayout()
@@ -112,7 +111,7 @@ Partial Class Form3
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(104, 311)
+        Label7.Location = New Point(104, 319)
         Label7.Name = "Label7"
         Label7.Size = New Size(33, 15)
         Label7.TabIndex = 9
@@ -157,14 +156,13 @@ Partial Class Form3
         ' 
         ' GroupBox2
         ' 
+        GroupBox2.Controls.Add(cbTipo)
+        GroupBox2.Controls.Add(Label3)
+        GroupBox2.Controls.Add(cbSeleccionar)
         GroupBox2.Controls.Add(Label4)
         GroupBox2.Controls.Add(Label5)
         GroupBox2.Controls.Add(Label6)
         GroupBox2.Controls.Add(Label7)
-        GroupBox2.Controls.Add(cbEliminarUsu)
-        GroupBox2.Controls.Add(cbModiUsu)
-        GroupBox2.Controls.Add(cbIngreUsu)
-        GroupBox2.Controls.Add(tbTipo)
         GroupBox2.Controls.Add(tbContraseña)
         GroupBox2.Controls.Add(tbCorreo)
         GroupBox2.Controls.Add(tbRut)
@@ -175,42 +173,22 @@ Partial Class Form3
         GroupBox2.TabStop = False
         GroupBox2.Text = "Gestion de Usuarios"
         ' 
-        ' cbEliminarUsu
+        ' Label3
         ' 
-        cbEliminarUsu.AutoSize = True
-        cbEliminarUsu.Location = New Point(348, 51)
-        cbEliminarUsu.Name = "cbEliminarUsu"
-        cbEliminarUsu.Size = New Size(112, 19)
-        cbEliminarUsu.TabIndex = 10
-        cbEliminarUsu.Text = "Eliminar Usuario"
-        cbEliminarUsu.UseVisualStyleBackColor = True
+        Label3.AutoSize = True
+        Label3.Location = New Point(67, 59)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(70, 15)
+        Label3.TabIndex = 10
+        Label3.Text = "Seleccionar:"
         ' 
-        ' cbModiUsu
+        ' cbSeleccionar
         ' 
-        cbModiUsu.AutoSize = True
-        cbModiUsu.Location = New Point(195, 51)
-        cbModiUsu.Name = "cbModiUsu"
-        cbModiUsu.Size = New Size(120, 19)
-        cbModiUsu.TabIndex = 9
-        cbModiUsu.Text = "Modificar Usuario"
-        cbModiUsu.UseVisualStyleBackColor = True
-        ' 
-        ' cbIngreUsu
-        ' 
-        cbIngreUsu.AutoSize = True
-        cbIngreUsu.Location = New Point(39, 51)
-        cbIngreUsu.Name = "cbIngreUsu"
-        cbIngreUsu.Size = New Size(111, 19)
-        cbIngreUsu.TabIndex = 8
-        cbIngreUsu.Text = "Ingresar Usuario"
-        cbIngreUsu.UseVisualStyleBackColor = True
-        ' 
-        ' tbTipo
-        ' 
-        tbTipo.Location = New Point(195, 308)
-        tbTipo.Name = "tbTipo"
-        tbTipo.Size = New Size(205, 23)
-        tbTipo.TabIndex = 7
+        cbSeleccionar.FormattingEnabled = True
+        cbSeleccionar.Location = New Point(195, 56)
+        cbSeleccionar.Name = "cbSeleccionar"
+        cbSeleccionar.Size = New Size(205, 23)
+        cbSeleccionar.TabIndex = 5
         ' 
         ' tbContraseña
         ' 
@@ -278,11 +256,20 @@ Partial Class Form3
         PictureBox1.TabIndex = 6
         PictureBox1.TabStop = False
         ' 
+        ' cbTipo
+        ' 
+        cbTipo.FormattingEnabled = True
+        cbTipo.Location = New Point(195, 311)
+        cbTipo.Name = "cbTipo"
+        cbTipo.Size = New Size(205, 23)
+        cbTipo.TabIndex = 11
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1020, 854)
+        AutoScroll = True
+        ClientSize = New Size(989, 661)
         Controls.Add(PictureBox1)
         Controls.Add(btVolver)
         Controls.Add(btEliminar)
@@ -322,7 +309,6 @@ Partial Class Form3
     Friend WithEvents cbEliminarUsu As CheckBox
     Friend WithEvents cbModiUsu As CheckBox
     Friend WithEvents cbIngreUsu As CheckBox
-    Friend WithEvents tbTipo As TextBox
     Friend WithEvents tbContraseña As TextBox
     Friend WithEvents tbCorreo As TextBox
     Friend WithEvents tbRut As TextBox
@@ -330,4 +316,7 @@ Partial Class Form3
     Friend WithEvents btEliminar As Button
     Friend WithEvents btVolver As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents cbSeleccionar As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents cbTipo As ComboBox
 End Class

@@ -31,6 +31,8 @@ Partial Class Form4
         Label3 = New Label()
         tbVisualizarItems = New DataGridView()
         GroupBox2 = New GroupBox()
+        cbSeleccionar = New ComboBox()
+        Label8 = New Label()
         tbProvedor = New TextBox()
         tbDescripcion = New TextBox()
         tbPrecio = New TextBox()
@@ -41,9 +43,6 @@ Partial Class Form4
         Label4 = New Label()
         tbID = New TextBox()
         Label2 = New Label()
-        cbEliminarItem = New CheckBox()
-        cbModiItem = New CheckBox()
-        cbIngreItem = New CheckBox()
         btGuardar = New Button()
         btEliminar = New Button()
         btModificar = New Button()
@@ -132,6 +131,8 @@ Partial Class Form4
         ' 
         ' GroupBox2
         ' 
+        GroupBox2.Controls.Add(cbSeleccionar)
+        GroupBox2.Controls.Add(Label8)
         GroupBox2.Controls.Add(tbProvedor)
         GroupBox2.Controls.Add(tbDescripcion)
         GroupBox2.Controls.Add(tbPrecio)
@@ -142,15 +143,29 @@ Partial Class Form4
         GroupBox2.Controls.Add(Label4)
         GroupBox2.Controls.Add(tbID)
         GroupBox2.Controls.Add(Label2)
-        GroupBox2.Controls.Add(cbEliminarItem)
-        GroupBox2.Controls.Add(cbModiItem)
-        GroupBox2.Controls.Add(cbIngreItem)
         GroupBox2.Location = New Point(42, 451)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(469, 352)
         GroupBox2.TabIndex = 10
         GroupBox2.TabStop = False
         GroupBox2.Text = "Gestion de Items"
+        ' 
+        ' cbSeleccionar
+        ' 
+        cbSeleccionar.FormattingEnabled = True
+        cbSeleccionar.Location = New Point(168, 39)
+        cbSeleccionar.Name = "cbSeleccionar"
+        cbSeleccionar.Size = New Size(204, 23)
+        cbSeleccionar.TabIndex = 14
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(61, 47)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(70, 15)
+        Label8.TabIndex = 13
+        Label8.Text = "Seleccionar:"
         ' 
         ' tbProvedor
         ' 
@@ -232,36 +247,6 @@ Partial Class Form4
         Label2.TabIndex = 3
         Label2.Text = "ID:"
         ' 
-        ' cbEliminarItem
-        ' 
-        cbEliminarItem.AutoSize = True
-        cbEliminarItem.Location = New Point(361, 43)
-        cbEliminarItem.Name = "cbEliminarItem"
-        cbEliminarItem.Size = New Size(96, 19)
-        cbEliminarItem.TabIndex = 2
-        cbEliminarItem.Text = "Eliminar Item"
-        cbEliminarItem.UseVisualStyleBackColor = True
-        ' 
-        ' cbModiItem
-        ' 
-        cbModiItem.AutoSize = True
-        cbModiItem.Location = New Point(184, 43)
-        cbModiItem.Name = "cbModiItem"
-        cbModiItem.Size = New Size(104, 19)
-        cbModiItem.TabIndex = 1
-        cbModiItem.Text = "Modificar Item"
-        cbModiItem.UseVisualStyleBackColor = True
-        ' 
-        ' cbIngreItem
-        ' 
-        cbIngreItem.AutoSize = True
-        cbIngreItem.Location = New Point(23, 43)
-        cbIngreItem.Name = "cbIngreItem"
-        cbIngreItem.Size = New Size(95, 19)
-        cbIngreItem.TabIndex = 0
-        cbIngreItem.Text = "Ingresar Item"
-        cbIngreItem.UseVisualStyleBackColor = True
-        ' 
         ' btGuardar
         ' 
         btGuardar.Location = New Point(743, 458)
@@ -291,7 +276,7 @@ Partial Class Form4
         ' 
         ' btVolver
         ' 
-        btVolver.Location = New Point(965, 787)
+        btVolver.Location = New Point(949, 780)
         btVolver.Name = "btVolver"
         btVolver.Size = New Size(75, 23)
         btVolver.TabIndex = 14
@@ -302,7 +287,8 @@ Partial Class Form4
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1052, 815)
+        AutoScroll = True
+        ClientSize = New Size(1059, 749)
         Controls.Add(btVolver)
         Controls.Add(btModificar)
         Controls.Add(btEliminar)
@@ -335,9 +321,6 @@ Partial Class Form4
     Friend WithEvents Label3 As Label
     Friend WithEvents btVisualizar As Button
     Friend WithEvents btBuscar As Button
-    Friend WithEvents cbEliminarItem As CheckBox
-    Friend WithEvents cbModiItem As CheckBox
-    Friend WithEvents cbIngreItem As CheckBox
     Friend WithEvents btGuardar As Button
     Friend WithEvents btEliminar As Button
     Friend WithEvents btModificar As Button
@@ -352,4 +335,6 @@ Partial Class Form4
     Friend WithEvents tbPrecio As TextBox
     Friend WithEvents tbCantidad As TextBox
     Friend WithEvents btVolver As Button
+    Friend WithEvents cbSeleccionar As ComboBox
+    Friend WithEvents Label8 As Label
 End Class
