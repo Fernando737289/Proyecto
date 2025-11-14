@@ -22,6 +22,7 @@ Partial Class Form2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         GroupBox1 = New GroupBox()
         Button6 = New Button()
         Button5 = New Button()
@@ -175,6 +176,7 @@ Partial Class Form2
         Controls.Add(BTNvolver)
         Controls.Add(PictureBox1)
         Controls.Add(GroupBox1)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Form2"

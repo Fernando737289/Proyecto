@@ -123,13 +123,13 @@ Public Class Form3
         Select Case cbSeleccionar.SelectedItem.ToString()
             Case "Ingresar usuario"
                 btGuardar.Enabled = True
-                Me.BackColor = Color.LightGreen
+
             Case "Modificar usuario"
                 btModificar.Enabled = True
-                Me.BackColor = Color.LightBlue
+
             Case "Eliminar usuario"
                 btEliminar.Enabled = True
-                Me.BackColor = Color.LightCoral
+
         End Select
     End Sub
 

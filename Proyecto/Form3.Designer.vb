@@ -22,6 +22,7 @@ Partial Class Form3
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         GroupBox1 = New GroupBox()
         Label2 = New Label()
         tbBuscarRut = New TextBox()
@@ -34,6 +35,7 @@ Partial Class Form3
         Label4 = New Label()
         Label1 = New Label()
         GroupBox2 = New GroupBox()
+        cbTipo = New ComboBox()
         Label3 = New Label()
         cbSeleccionar = New ComboBox()
         tbContraseña = New TextBox()
@@ -44,7 +46,6 @@ Partial Class Form3
         btEliminar = New Button()
         btVolver = New Button()
         PictureBox1 = New PictureBox()
-        cbTipo = New ComboBox()
         GroupBox1.SuspendLayout()
         CType(tbVisuaUsu, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox2.SuspendLayout()
@@ -173,6 +174,14 @@ Partial Class Form3
         GroupBox2.TabStop = False
         GroupBox2.Text = "Gestion de Usuarios"
         ' 
+        ' cbTipo
+        ' 
+        cbTipo.FormattingEnabled = True
+        cbTipo.Location = New Point(195, 311)
+        cbTipo.Name = "cbTipo"
+        cbTipo.Size = New Size(205, 23)
+        cbTipo.TabIndex = 11
+        ' 
         ' Label3
         ' 
         Label3.AutoSize = True
@@ -256,14 +265,6 @@ Partial Class Form3
         PictureBox1.TabIndex = 6
         PictureBox1.TabStop = False
         ' 
-        ' cbTipo
-        ' 
-        cbTipo.FormattingEnabled = True
-        cbTipo.Location = New Point(195, 311)
-        cbTipo.Name = "cbTipo"
-        cbTipo.Size = New Size(205, 23)
-        cbTipo.TabIndex = 11
-        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -278,6 +279,7 @@ Partial Class Form3
         Controls.Add(Label1)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Form3"

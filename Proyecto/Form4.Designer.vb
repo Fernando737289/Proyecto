@@ -22,6 +22,7 @@ Partial Class Form4
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form4))
         PictureBox1 = New PictureBox()
         Label1 = New Label()
         GroupBox1 = New GroupBox()
@@ -49,9 +50,8 @@ Partial Class Form4
         btVolver = New Button()
         tabControlMain = New TabControl()
         TabPageInventario = New TabPage()
-        btVolver1 = New Button()
         TabPageVentas = New TabPage()
-        btVolver2 = New Button()
+        btVolver1 = New Button()
         GroupBox4 = New GroupBox()
         Label20 = New Label()
         Label19 = New Label()
@@ -316,7 +316,7 @@ Partial Class Form4
         ' 
         ' btVolver
         ' 
-        btVolver.Location = New Point(949, 780)
+        btVolver.Location = New Point(1006, 786)
         btVolver.Name = "btVolver"
         btVolver.Size = New Size(75, 23)
         btVolver.TabIndex = 14
@@ -325,18 +325,20 @@ Partial Class Form4
         ' 
         ' tabControlMain
         ' 
+        tabControlMain.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         tabControlMain.Controls.Add(TabPageInventario)
         tabControlMain.Controls.Add(TabPageVentas)
-        tabControlMain.Dock = DockStyle.Fill
-        tabControlMain.Location = New Point(0, 0)
+        tabControlMain.Location = New Point(0, -1)
         tabControlMain.Name = "tabControlMain"
         tabControlMain.SelectedIndex = 0
-        tabControlMain.Size = New Size(1120, 862)
+        tabControlMain.Size = New Size(1152, 751)
         tabControlMain.TabIndex = 15
         ' 
         ' TabPageInventario
         ' 
-        TabPageInventario.Controls.Add(btVolver1)
+        TabPageInventario.AutoScroll = True
+        TabPageInventario.BackColor = Color.Gray
+        TabPageInventario.Controls.Add(btVolver)
         TabPageInventario.Controls.Add(PictureBox1)
         TabPageInventario.Controls.Add(Label1)
         TabPageInventario.Controls.Add(btModificar)
@@ -344,26 +346,18 @@ Partial Class Form4
         TabPageInventario.Controls.Add(GroupBox1)
         TabPageInventario.Controls.Add(GroupBox2)
         TabPageInventario.Controls.Add(btGuardar)
+        TabPageInventario.ForeColor = Color.Black
         TabPageInventario.Location = New Point(4, 24)
         TabPageInventario.Name = "TabPageInventario"
         TabPageInventario.Padding = New Padding(3)
-        TabPageInventario.Size = New Size(1112, 834)
+        TabPageInventario.Size = New Size(1144, 723)
         TabPageInventario.TabIndex = 0
         TabPageInventario.Text = "INVENTARIO"
-        TabPageInventario.UseVisualStyleBackColor = True
-        ' 
-        ' btVolver1
-        ' 
-        btVolver1.Location = New Point(956, 23)
-        btVolver1.Name = "btVolver1"
-        btVolver1.Size = New Size(117, 55)
-        btVolver1.TabIndex = 14
-        btVolver1.Text = "Volver"
-        btVolver1.UseVisualStyleBackColor = True
         ' 
         ' TabPageVentas
         ' 
-        TabPageVentas.Controls.Add(btVolver2)
+        TabPageVentas.BackColor = Color.Gray
+        TabPageVentas.Controls.Add(btVolver1)
         TabPageVentas.Controls.Add(GroupBox4)
         TabPageVentas.Controls.Add(GroupBox3)
         TabPageVentas.Controls.Add(Label9)
@@ -371,19 +365,18 @@ Partial Class Form4
         TabPageVentas.Location = New Point(4, 24)
         TabPageVentas.Name = "TabPageVentas"
         TabPageVentas.Padding = New Padding(3)
-        TabPageVentas.Size = New Size(1112, 834)
+        TabPageVentas.Size = New Size(1144, 723)
         TabPageVentas.TabIndex = 1
         TabPageVentas.Text = "VENTAS"
-        TabPageVentas.UseVisualStyleBackColor = True
         ' 
-        ' btVolver2
+        ' btVolver1
         ' 
-        btVolver2.Location = New Point(945, 25)
-        btVolver2.Name = "btVolver2"
-        btVolver2.Size = New Size(117, 55)
-        btVolver2.TabIndex = 23
-        btVolver2.Text = "Volver"
-        btVolver2.UseVisualStyleBackColor = True
+        btVolver1.Location = New Point(945, 25)
+        btVolver1.Name = "btVolver1"
+        btVolver1.Size = New Size(117, 55)
+        btVolver1.TabIndex = 23
+        btVolver1.Text = "Volver"
+        btVolver1.UseVisualStyleBackColor = True
         ' 
         ' GroupBox4
         ' 
@@ -540,20 +533,20 @@ Partial Class Form4
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Location = New Point(74, 161)
+        Label14.Location = New Point(126, 156)
         Label14.Name = "Label14"
-        Label14.Size = New Size(39, 15)
+        Label14.Size = New Size(28, 15)
         Label14.TabIndex = 25
-        Label14.Text = "Desde"
+        Label14.Text = "Rut:"
         ' 
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Location = New Point(74, 111)
+        Label13.Location = New Point(51, 106)
         Label13.Name = "Label13"
-        Label13.Size = New Size(103, 15)
+        Label13.Size = New Size(106, 15)
         Label13.TabIndex = 24
-        Label13.Text = "Nombre Repuesto"
+        Label13.Text = "Nombre Repuesto:"
         ' 
         ' Label12
         ' 
@@ -622,7 +615,7 @@ Partial Class Form4
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label9.Location = New Point(274, 99)
+        Label9.Location = New Point(340, 68)
         Label9.Name = "Label9"
         Label9.Size = New Size(432, 65)
         Label9.TabIndex = 9
@@ -642,9 +635,9 @@ Partial Class Form4
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoScroll = True
-        ClientSize = New Size(1120, 862)
+        ClientSize = New Size(1151, 749)
         Controls.Add(tabControlMain)
-        Controls.Add(btVolver)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Form4"
@@ -718,7 +711,6 @@ Partial Class Form4
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Label14 As Label
-    Friend WithEvents btVolver1 As Button
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Label10 As Label
     Friend WithEvents Label17 As Label
@@ -727,5 +719,5 @@ Partial Class Form4
     Friend WithEvents Label20 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents Label18 As Label
-    Friend WithEvents btVolver2 As Button
+    Friend WithEvents btVolver1 As Button
 End Class
