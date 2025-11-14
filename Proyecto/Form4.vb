@@ -221,6 +221,9 @@ Public Class Form4
                 comando.ExecuteNonQuery()
 
                 MessageBox.Show("Repuesto eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                CargarComboRepuestosVenta()
+
                 LimpiarCampos()
             Catch ex As Exception
                 MessageBox.Show("Error al eliminar repuesto: " & ex.Message)
