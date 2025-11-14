@@ -1,11 +1,20 @@
 ﻿Imports MySql.Data.MySqlClient
 
+
+
 Public Class Form4
+
+    Private precioSeleccionado As Decimal
+    Private stockDisponible As Integer
     Public Property TipoUsuario As String
     Public Property CorreoUsuario As String
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = Color.Gray
+
+        CargarComboRepuestosVenta()
+        CargarComboClientesVenta()
+        RefrescarResumenVentas()
 
 
         btGuardar.Enabled = False
@@ -19,6 +28,45 @@ Public Class Form4
         cbSeleccionar.SelectedIndex = -1
     End Sub
 
+    Private Sub CargarComboRepuestosVenta()
+        Try
+            Dim con As MySqlConnection = ConexionDB.ObtenerConexion()
+            Dim query As String = "SELECT RepuestoID, NombreRepuesto, CantidadStock, PrecioUnitario 
+                               FROM repuestos"
+            Dim cmd As New MySqlCommand(query, con)
+            Dim da As New MySqlDataAdapter(cmd)
+            Dim dt As New DataTable()
+            da.Fill(dt)
+
+            cbRepuestoVenta.DataSource = dt
+            cbRepuestoVenta.DisplayMember = "NombreRepuesto"
+            cbRepuestoVenta.ValueMember = "RepuestoID"
+            cbRepuestoVenta.SelectedIndex = -1
+            tbStockDisponible.Clear()
+            tbPrecioUnitario.Clear()
+        Catch ex As Exception
+            MessageBox.Show("Error cargando repuestos: " & ex.Message)
+        End Try
+    End Sub
+
+
+    Private Sub CargarComboClientesVenta()
+        Try
+            Dim con As MySqlConnection = ConexionDB.ObtenerConexion()
+            Dim query As String = "SELECT Rut, Nombre, ApellidoP FROM clientes"
+            Dim cmd As New MySqlCommand(query, con)
+            Dim da As New MySqlDataAdapter(cmd)
+            Dim dt As New DataTable()
+            da.Fill(dt)
+
+            cbClienteVenta.DataSource = dt
+            cbClienteVenta.DisplayMember = "Nombre"
+            cbClienteVenta.ValueMember = "Rut"
+            cbClienteVenta.SelectedIndex = -1
+        Catch ex As Exception
+            MessageBox.Show("Error cargando clientes: " & ex.Message)
+        End Try
+    End Sub
 
     Private Sub cbSeleccionar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSeleccionar.SelectedIndexChanged
 
@@ -186,11 +234,172 @@ Public Class Form4
     End Sub
 
 
-    Private Sub btVolver_Click(sender As Object, e As EventArgs) Handles btVolver.Click
+    Private Sub btVolver1_Click(sender As Object, e As EventArgs) Handles btVolver1.Click
         Dim menu As New Form2()
         menu.TipoUsuario = TipoUsuario
         menu.CorreoUsuario = CorreoUsuario
         menu.Show()
         Me.Hide()
     End Sub
+
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+
+    End Sub
+
+    Private Sub cbRepuestoVenta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRepuestoVenta.SelectedIndexChanged
+        If cbRepuestoVenta.SelectedIndex = -1 Then
+            tbStockDisponible.Clear()
+            tbPrecioUnitario.Clear()
+            Return
+        End If
+
+        Dim fila As DataRowView = CType(cbRepuestoVenta.SelectedItem, DataRowView)
+        stockDisponible = Convert.ToInt32(fila("CantidadStock"))
+        precioSeleccionado = Convert.ToDecimal(fila("PrecioUnitario"))
+
+        tbStockDisponible.Text = stockDisponible.ToString()
+        tbPrecioUnitario.Text = precioSeleccionado.ToString("0.00")
+
+        nudCantidadVenta.Maximum = stockDisponible
+        nudCantidadVenta.Value = If(stockDisponible > 0, 1, 0)
+    End Sub
+
+    Private Function ObtenerSiguienteVentaID() As Integer
+        Try
+            Dim con As MySqlConnection = ConexionDB.ObtenerConexion()
+            Dim query As String = "SELECT IFNULL(MAX(VentaID), 0) + 1 FROM ventasrepuestos"
+            Dim cmd As New MySqlCommand(query, con)
+            Return Convert.ToInt32(cmd.ExecuteScalar())
+        Catch ex As Exception
+            MessageBox.Show("Error obteniendo VentaID: " & ex.Message)
+            Return -1
+        End Try
+    End Function
+
+    Private Sub btRegistrarVenta_Click(sender As Object, e As EventArgs) Handles btRegistrarVenta.Click
+
+        If cbRepuestoVenta.SelectedIndex = -1 Then
+            MessageBox.Show("Seleccione un repuesto.")
+            Return
+        End If
+
+        If cbClienteVenta.SelectedIndex = -1 Then
+            MessageBox.Show("Seleccione un cliente.")
+            Return
+        End If
+
+        If nudCantidadVenta.Value > stockDisponible Then
+            MessageBox.Show("No hay stock suficiente.")
+            Return
+        End If
+
+        Dim cantidad As Integer = Convert.ToInt32(nudCantidadVenta.Value)
+        Dim total As Decimal = cantidad * precioSeleccionado
+        Dim repuestoNombre As String = cbRepuestoVenta.Text
+        Dim cliente As String = cbClienteVenta.SelectedValue.ToString()
+        Dim fechaVenta As String = DateTime.Now.ToString("yyyy-MM-dd")
+
+        ' ➜ Obtener el siguiente ID que usará esta venta
+        Dim nuevoID As Integer = ObtenerSiguienteVentaID()
+        If nuevoID = -1 Then Exit Sub
+
+        Try
+            Dim con As MySqlConnection = ConexionDB.ObtenerConexion()
+            Dim trans As MySqlTransaction = con.BeginTransaction()
+
+            Try
+                ' 1. Insertar venta con VentaID obligatorio
+                Dim qInsert As String =
+                "INSERT INTO ventasrepuestos (VentaID, NombreRepuesto, CantidadVendida, Cliente, FechaVenta, Total)
+                 VALUES (@id, @rep, @cant, @cli, @fecha, @total)"
+
+                Dim cmdInsert As New MySqlCommand(qInsert, con, trans)
+                cmdInsert.Parameters.AddWithValue("@id", nuevoID)
+                cmdInsert.Parameters.AddWithValue("@rep", repuestoNombre)
+                cmdInsert.Parameters.AddWithValue("@cant", cantidad)
+                cmdInsert.Parameters.AddWithValue("@cli", cliente)
+                cmdInsert.Parameters.AddWithValue("@fecha", fechaVenta)
+                cmdInsert.Parameters.AddWithValue("@total", total)
+                cmdInsert.ExecuteNonQuery()
+
+                ' 2. Descontar stock
+                Dim qStock As String =
+                "UPDATE repuestos SET CantidadStock = CantidadStock - @cant WHERE RepuestoID = @idRep"
+
+                Dim cmdStock As New MySqlCommand(qStock, con, trans)
+                cmdStock.Parameters.AddWithValue("@cant", cantidad)
+                cmdStock.Parameters.AddWithValue("@idRep", cbRepuestoVenta.SelectedValue)
+                cmdStock.ExecuteNonQuery()
+
+                trans.Commit()
+
+                MessageBox.Show("Venta registrada correctamente.")
+
+                CargarComboRepuestosVenta()
+                RefrescarResumenVentas()
+                tbStockDisponible.Clear()
+                tbPrecioUnitario.Clear()
+                nudCantidadVenta.Value = 1
+
+            Catch ex As Exception
+                trans.Rollback()
+                MessageBox.Show("Error al registrar venta: " & ex.Message)
+            End Try
+
+        Catch ex As Exception
+            MessageBox.Show("Error de conexión: " & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub btFiltrarVentas_Click(sender As Object, e As EventArgs) Handles btFiltrarVentas.Click
+        Dim desde As Date = dtpDesde.Value.Date
+        Dim hasta As Date = dtpHasta.Value.Date
+        Dim repuestoFiltro As String = tbFiltroRepuesto.Text.Trim()
+        Dim clienteFiltro As String = tbFiltroCliente.Text.Trim()
+
+        RefrescarResumenVentas(desde, hasta, repuestoFiltro, clienteFiltro)
+    End Sub
+
+
+    Private Sub RefrescarResumenVentas(Optional desde As Date = Nothing,
+                                   Optional hasta As Date = Nothing,
+                                   Optional repuesto As String = "",
+                                   Optional cliente As String = "")
+
+        Try
+            Dim con As MySqlConnection = ConexionDB.ObtenerConexion()
+
+            Dim query As String =
+                "SELECT VentaID, NombreRepuesto, CantidadVendida, Cliente, FechaVenta, Total
+             FROM ventasrepuestos
+             WHERE 1=1"
+
+            If desde <> Nothing Then query &= " AND FechaVenta >= @desde"
+            If hasta <> Nothing Then query &= " AND FechaVenta <= @hasta"
+            If repuesto <> "" Then query &= " AND NombreRepuesto LIKE @rep"
+            If cliente <> "" Then query &= " AND Cliente LIKE @cli"
+
+            Dim cmd As New MySqlCommand(query, con)
+
+            If desde <> Nothing Then cmd.Parameters.AddWithValue("@desde", desde)
+            If hasta <> Nothing Then cmd.Parameters.AddWithValue("@hasta", hasta)
+            If repuesto <> "" Then cmd.Parameters.AddWithValue("@rep", "%" & repuesto & "%")
+            If cliente <> "" Then cmd.Parameters.AddWithValue("@cli", "%" & cliente & "%")
+
+            Dim da As New MySqlDataAdapter(cmd)
+            Dim dt As New DataTable()
+            da.Fill(dt)
+
+            dgResumenVentas.DataSource = dt
+            dgResumenVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+        Catch ex As Exception
+            MessageBox.Show("Error cargando ventas: " & ex.Message)
+        End Try
+
+    End Sub
+
+
 End Class
