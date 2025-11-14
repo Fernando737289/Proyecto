@@ -235,11 +235,11 @@ Public Class Form4
 
 
     Private Sub btVolver1_Click(sender As Object, e As EventArgs) Handles btVolver1.Click
-        Dim menu As New Form2()
+        Dim menu As New Form2
         menu.TipoUsuario = TipoUsuario
         menu.CorreoUsuario = CorreoUsuario
         menu.Show()
-        Me.Hide()
+        Hide()
     End Sub
 
 
@@ -401,5 +401,23 @@ Public Class Form4
 
     End Sub
 
+    Private Sub TabPageInventario_Click(sender As Object, e As EventArgs) Handles TabPageInventario.Click
 
+    End Sub
+
+    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+
+    End Sub
+
+    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
+
+    End Sub
+
+    Private Sub btVolver2_Click(sender As Object, e As EventArgs) Handles btVolver2.Click
+        Dim menu As New Form2
+        menu.TipoUsuario = TipoUsuario
+        menu.CorreoUsuario = CorreoUsuario
+        menu.Show()
+        Hide()
+    End Sub
 End Class

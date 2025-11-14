@@ -49,8 +49,23 @@ Partial Class Form4
         btVolver = New Button()
         tabControlMain = New TabControl()
         TabPageInventario = New TabPage()
+        btVolver1 = New Button()
         TabPageVentas = New TabPage()
+        btVolver2 = New Button()
+        GroupBox4 = New GroupBox()
+        Label20 = New Label()
+        Label19 = New Label()
+        Label18 = New Label()
+        Label17 = New Label()
+        Label16 = New Label()
+        Label15 = New Label()
+        Label10 = New Label()
+        cbRepuestoVenta = New ComboBox()
         tbPrecioUnitario = New TextBox()
+        btRegistrarVenta = New Button()
+        nudCantidadVenta = New NumericUpDown()
+        cbClienteVenta = New ComboBox()
+        tbStockDisponible = New TextBox()
         GroupBox3 = New GroupBox()
         Label14 = New Label()
         Label13 = New Label()
@@ -62,15 +77,8 @@ Partial Class Form4
         tbFiltroRepuesto = New TextBox()
         dtpHasta = New DateTimePicker()
         dtpDesde = New DateTimePicker()
-        btRegistrarVenta = New Button()
-        cbClienteVenta = New ComboBox()
-        nudCantidadVenta = New NumericUpDown()
-        tbStockDisponible = New TextBox()
-        Label10 = New Label()
-        cbRepuestoVenta = New ComboBox()
         Label9 = New Label()
         PictureBox2 = New PictureBox()
-        btVolver1 = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
         CType(tbVisualizarItems, ComponentModel.ISupportInitialize).BeginInit()
@@ -78,9 +86,10 @@ Partial Class Form4
         tabControlMain.SuspendLayout()
         TabPageInventario.SuspendLayout()
         TabPageVentas.SuspendLayout()
+        GroupBox4.SuspendLayout()
+        CType(nudCantidadVenta, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox3.SuspendLayout()
         CType(dgResumenVentas, ComponentModel.ISupportInitialize).BeginInit()
-        CType(nudCantidadVenta, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -322,7 +331,7 @@ Partial Class Form4
         tabControlMain.Location = New Point(0, 0)
         tabControlMain.Name = "tabControlMain"
         tabControlMain.SelectedIndex = 0
-        tabControlMain.Size = New Size(1024, 1044)
+        tabControlMain.Size = New Size(1120, 862)
         tabControlMain.TabIndex = 15
         ' 
         ' TabPageInventario
@@ -338,38 +347,176 @@ Partial Class Form4
         TabPageInventario.Location = New Point(4, 24)
         TabPageInventario.Name = "TabPageInventario"
         TabPageInventario.Padding = New Padding(3)
-        TabPageInventario.Size = New Size(1016, 1016)
+        TabPageInventario.Size = New Size(1112, 834)
         TabPageInventario.TabIndex = 0
         TabPageInventario.Text = "INVENTARIO"
         TabPageInventario.UseVisualStyleBackColor = True
         ' 
+        ' btVolver1
+        ' 
+        btVolver1.Location = New Point(956, 23)
+        btVolver1.Name = "btVolver1"
+        btVolver1.Size = New Size(117, 55)
+        btVolver1.TabIndex = 14
+        btVolver1.Text = "Volver"
+        btVolver1.UseVisualStyleBackColor = True
+        ' 
         ' TabPageVentas
         ' 
-        TabPageVentas.Controls.Add(tbPrecioUnitario)
+        TabPageVentas.Controls.Add(btVolver2)
+        TabPageVentas.Controls.Add(GroupBox4)
         TabPageVentas.Controls.Add(GroupBox3)
-        TabPageVentas.Controls.Add(btRegistrarVenta)
-        TabPageVentas.Controls.Add(cbClienteVenta)
-        TabPageVentas.Controls.Add(nudCantidadVenta)
-        TabPageVentas.Controls.Add(tbStockDisponible)
-        TabPageVentas.Controls.Add(Label10)
-        TabPageVentas.Controls.Add(cbRepuestoVenta)
         TabPageVentas.Controls.Add(Label9)
         TabPageVentas.Controls.Add(PictureBox2)
         TabPageVentas.Location = New Point(4, 24)
         TabPageVentas.Name = "TabPageVentas"
         TabPageVentas.Padding = New Padding(3)
-        TabPageVentas.Size = New Size(1016, 1016)
+        TabPageVentas.Size = New Size(1112, 834)
         TabPageVentas.TabIndex = 1
         TabPageVentas.Text = "VENTAS"
         TabPageVentas.UseVisualStyleBackColor = True
         ' 
+        ' btVolver2
+        ' 
+        btVolver2.Location = New Point(945, 25)
+        btVolver2.Name = "btVolver2"
+        btVolver2.Size = New Size(117, 55)
+        btVolver2.TabIndex = 23
+        btVolver2.Text = "Volver"
+        btVolver2.UseVisualStyleBackColor = True
+        ' 
+        ' GroupBox4
+        ' 
+        GroupBox4.Controls.Add(Label20)
+        GroupBox4.Controls.Add(Label19)
+        GroupBox4.Controls.Add(Label18)
+        GroupBox4.Controls.Add(Label17)
+        GroupBox4.Controls.Add(Label16)
+        GroupBox4.Controls.Add(Label15)
+        GroupBox4.Controls.Add(Label10)
+        GroupBox4.Controls.Add(cbRepuestoVenta)
+        GroupBox4.Controls.Add(tbPrecioUnitario)
+        GroupBox4.Controls.Add(btRegistrarVenta)
+        GroupBox4.Controls.Add(nudCantidadVenta)
+        GroupBox4.Controls.Add(cbClienteVenta)
+        GroupBox4.Controls.Add(tbStockDisponible)
+        GroupBox4.Location = New Point(0, 195)
+        GroupBox4.Name = "GroupBox4"
+        GroupBox4.Size = New Size(563, 484)
+        GroupBox4.TabIndex = 22
+        GroupBox4.TabStop = False
+        GroupBox4.Text = "Registrar Ventas"
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.Location = New Point(482, 73)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(28, 15)
+        Label20.TabIndex = 28
+        Label20.Text = "C/U"
+        ' 
+        ' Label19
+        ' 
+        Label19.AutoSize = True
+        Label19.Location = New Point(291, 78)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(79, 15)
+        Label19.TabIndex = 27
+        Label19.Text = "seleccionado:"
+        ' 
+        ' Label18
+        ' 
+        Label18.AutoSize = True
+        Label18.Location = New Point(27, 291)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(71, 15)
+        Label18.TabIndex = 26
+        Label18.Text = "Comprador:"
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoSize = True
+        Label17.Location = New Point(27, 223)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(58, 15)
+        Label17.TabIndex = 25
+        Label17.Text = "Cantidad:"
+        ' 
+        ' Label16
+        ' 
+        Label16.AutoSize = True
+        Label16.Location = New Point(27, 65)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(59, 15)
+        Label16.TabIndex = 24
+        Label16.Text = "Repuesto:"
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Location = New Point(303, 63)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(67, 15)
+        Label15.TabIndex = 23
+        Label15.Text = "Precio item"
+        ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Location = New Point(27, 140)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(39, 15)
+        Label10.TabIndex = 22
+        Label10.Text = "Stock:"
+        ' 
+        ' cbRepuestoVenta
+        ' 
+        cbRepuestoVenta.FormattingEnabled = True
+        cbRepuestoVenta.Location = New Point(101, 65)
+        cbRepuestoVenta.Name = "cbRepuestoVenta"
+        cbRepuestoVenta.Size = New Size(180, 23)
+        cbRepuestoVenta.TabIndex = 10
+        ' 
         ' tbPrecioUnitario
         ' 
-        tbPrecioUnitario.Location = New Point(449, 364)
+        tbPrecioUnitario.Location = New Point(376, 70)
         tbPrecioUnitario.Name = "tbPrecioUnitario"
         tbPrecioUnitario.ReadOnly = True
         tbPrecioUnitario.Size = New Size(100, 23)
         tbPrecioUnitario.TabIndex = 21
+        ' 
+        ' btRegistrarVenta
+        ' 
+        btRegistrarVenta.Location = New Point(220, 386)
+        btRegistrarVenta.Name = "btRegistrarVenta"
+        btRegistrarVenta.Size = New Size(133, 50)
+        btRegistrarVenta.TabIndex = 15
+        btRegistrarVenta.Text = "Registrar Venta"
+        btRegistrarVenta.UseVisualStyleBackColor = True
+        ' 
+        ' nudCantidadVenta
+        ' 
+        nudCantidadVenta.Location = New Point(101, 215)
+        nudCantidadVenta.Name = "nudCantidadVenta"
+        nudCantidadVenta.Size = New Size(182, 23)
+        nudCantidadVenta.TabIndex = 13
+        ' 
+        ' cbClienteVenta
+        ' 
+        cbClienteVenta.FormattingEnabled = True
+        cbClienteVenta.Location = New Point(101, 288)
+        cbClienteVenta.Name = "cbClienteVenta"
+        cbClienteVenta.Size = New Size(182, 23)
+        cbClienteVenta.TabIndex = 14
+        ' 
+        ' tbStockDisponible
+        ' 
+        tbStockDisponible.Location = New Point(101, 137)
+        tbStockDisponible.Name = "tbStockDisponible"
+        tbStockDisponible.ReadOnly = True
+        tbStockDisponible.Size = New Size(182, 23)
+        tbStockDisponible.TabIndex = 12
         ' 
         ' GroupBox3
         ' 
@@ -383,9 +530,9 @@ Partial Class Form4
         GroupBox3.Controls.Add(tbFiltroRepuesto)
         GroupBox3.Controls.Add(dtpHasta)
         GroupBox3.Controls.Add(dtpDesde)
-        GroupBox3.Location = New Point(33, 451)
+        GroupBox3.Location = New Point(584, 195)
         GroupBox3.Name = "GroupBox3"
-        GroupBox3.Size = New Size(570, 540)
+        GroupBox3.Size = New Size(570, 484)
         GroupBox3.TabIndex = 20
         GroupBox3.TabStop = False
         GroupBox3.Text = "Filtro Ventas"
@@ -429,16 +576,16 @@ Partial Class Form4
         ' dgResumenVentas
         ' 
         dgResumenVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgResumenVentas.Location = New Point(32, 305)
+        dgResumenVentas.Location = New Point(32, 288)
         dgResumenVentas.Name = "dgResumenVentas"
-        dgResumenVentas.Size = New Size(484, 207)
+        dgResumenVentas.Size = New Size(484, 180)
         dgResumenVentas.TabIndex = 21
         ' 
         ' btFiltrarVentas
         ' 
         btFiltrarVentas.Location = New Point(74, 215)
         btFiltrarVentas.Name = "btFiltrarVentas"
-        btFiltrarVentas.Size = New Size(64, 39)
+        btFiltrarVentas.Size = New Size(103, 39)
         btFiltrarVentas.TabIndex = 20
         btFiltrarVentas.Text = "Aplicar Filtros"
         btFiltrarVentas.UseVisualStyleBackColor = True
@@ -471,55 +618,6 @@ Partial Class Form4
         dtpDesde.Size = New Size(238, 23)
         dtpDesde.TabIndex = 0
         ' 
-        ' btRegistrarVenta
-        ' 
-        btRegistrarVenta.Location = New Point(294, 351)
-        btRegistrarVenta.Name = "btRegistrarVenta"
-        btRegistrarVenta.Size = New Size(116, 23)
-        btRegistrarVenta.TabIndex = 15
-        btRegistrarVenta.Text = "Registrar Venta"
-        btRegistrarVenta.UseVisualStyleBackColor = True
-        ' 
-        ' cbClienteVenta
-        ' 
-        cbClienteVenta.FormattingEnabled = True
-        cbClienteVenta.Location = New Point(449, 298)
-        cbClienteVenta.Name = "cbClienteVenta"
-        cbClienteVenta.Size = New Size(134, 23)
-        cbClienteVenta.TabIndex = 14
-        ' 
-        ' nudCantidadVenta
-        ' 
-        nudCantidadVenta.Location = New Point(231, 285)
-        nudCantidadVenta.Name = "nudCantidadVenta"
-        nudCantidadVenta.Size = New Size(120, 23)
-        nudCantidadVenta.TabIndex = 13
-        ' 
-        ' tbStockDisponible
-        ' 
-        tbStockDisponible.Location = New Point(503, 241)
-        tbStockDisponible.Name = "tbStockDisponible"
-        tbStockDisponible.ReadOnly = True
-        tbStockDisponible.Size = New Size(100, 23)
-        tbStockDisponible.TabIndex = 12
-        ' 
-        ' Label10
-        ' 
-        Label10.AutoSize = True
-        Label10.Location = New Point(360, 243)
-        Label10.Name = "Label10"
-        Label10.Size = New Size(36, 15)
-        Label10.TabIndex = 11
-        Label10.Text = "Stock"
-        ' 
-        ' cbRepuestoVenta
-        ' 
-        cbRepuestoVenta.FormattingEnabled = True
-        cbRepuestoVenta.Location = New Point(65, 240)
-        cbRepuestoVenta.Name = "cbRepuestoVenta"
-        cbRepuestoVenta.Size = New Size(155, 23)
-        cbRepuestoVenta.TabIndex = 10
-        ' 
         ' Label9
         ' 
         Label9.AutoSize = True
@@ -533,27 +631,18 @@ Partial Class Form4
         ' PictureBox2
         ' 
         PictureBox2.Image = My.Resources.Resources.Logo1
-        PictureBox2.Location = New Point(20, 25)
+        PictureBox2.Location = New Point(27, 25)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(160, 139)
         PictureBox2.TabIndex = 8
         PictureBox2.TabStop = False
-        ' 
-        ' btVolver1
-        ' 
-        btVolver1.Location = New Point(448, 910)
-        btVolver1.Name = "btVolver1"
-        btVolver1.Size = New Size(117, 55)
-        btVolver1.TabIndex = 14
-        btVolver1.Text = "Volver"
-        btVolver1.UseVisualStyleBackColor = True
         ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoScroll = True
-        ClientSize = New Size(969, 1061)
+        ClientSize = New Size(1120, 862)
         Controls.Add(tabControlMain)
         Controls.Add(btVolver)
         MaximizeBox = False
@@ -572,10 +661,12 @@ Partial Class Form4
         TabPageInventario.PerformLayout()
         TabPageVentas.ResumeLayout(False)
         TabPageVentas.PerformLayout()
+        GroupBox4.ResumeLayout(False)
+        GroupBox4.PerformLayout()
+        CType(nudCantidadVenta, ComponentModel.ISupportInitialize).EndInit()
         GroupBox3.ResumeLayout(False)
         GroupBox3.PerformLayout()
         CType(dgResumenVentas, ComponentModel.ISupportInitialize).EndInit()
-        CType(nudCantidadVenta, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
@@ -612,7 +703,6 @@ Partial Class Form4
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents cbRepuestoVenta As ComboBox
     Friend WithEvents tbStockDisponible As TextBox
-    Friend WithEvents Label10 As Label
     Friend WithEvents nudCantidadVenta As NumericUpDown
     Friend WithEvents btRegistrarVenta As Button
     Friend WithEvents cbClienteVenta As ComboBox
@@ -629,4 +719,13 @@ Partial Class Form4
     Friend WithEvents Label11 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents btVolver1 As Button
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents btVolver2 As Button
 End Class
