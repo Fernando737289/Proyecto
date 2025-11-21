@@ -23,7 +23,7 @@ Public Class Form5
 
     Private Sub btGuardarCliente_Click(sender As Object, e As EventArgs) Handles btGuardarCliente.Click
 
-        ' Validar campos obligatorios
+
         If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or
            TextBox4.Text = "" Or TextBox5.Text = "" Or TextBox6.Text = "" Or TextBox7.Text = "" Then
 
@@ -53,7 +53,7 @@ Public Class Form5
 
             MessageBox.Show("Cliente registrado correctamente.")
 
-            ' → Devolver el RUT a Form4 y reactivar el formulario
+
             If FormPadre IsNot Nothing Then
                 FormPadre.Enabled = True
                 FormPadre.ContinuarVentaDespuesDeRegistrarCliente(TextBox1.Text.Trim())
