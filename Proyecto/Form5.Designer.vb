@@ -206,8 +206,11 @@ Partial Class Form5
         Controls.Add(TextBox2)
         Controls.Add(TextBox1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MaximizeBox = False
+        MinimizeBox = False
         Name = "Form5"
-        Text = "Form5"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Registro de Clientes"
         ResumeLayout(False)
         PerformLayout()
     End Sub

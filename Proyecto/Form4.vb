@@ -294,15 +294,16 @@ Public Class Form4
             Return
         End If
 
-        If cantidad > stockDisponible Then
-            MessageBox.Show("Venta no permitida: stock insuficiente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return
-        End If
 
         Dim repuestoID As Integer = Convert.ToInt32(cbRepuestoVenta.SelectedValue)
         Dim rutClienteIngresado As String = tbRutVenta.Text.Trim()
         If rutClienteIngresado = "" Then
             MessageBox.Show("Ingrese el RUT del cliente.")
+            Return
+        End If
+
+        If cantidad > stockDisponible Then
+            MessageBox.Show("Venta no permitida: stock insuficiente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
 
