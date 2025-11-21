@@ -20,7 +20,7 @@ Partial Class Form4
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form4))
         PictureBox1 = New PictureBox()
@@ -53,6 +53,7 @@ Partial Class Form4
         TabPageVentas = New TabPage()
         btVolver1 = New Button()
         GroupBox4 = New GroupBox()
+        tbRutVenta = New TextBox()
         Label20 = New Label()
         Label19 = New Label()
         Label18 = New Label()
@@ -64,7 +65,6 @@ Partial Class Form4
         tbPrecioUnitario = New TextBox()
         btRegistrarVenta = New Button()
         nudCantidadVenta = New NumericUpDown()
-        cbClienteVenta = New ComboBox()
         tbStockDisponible = New TextBox()
         GroupBox3 = New GroupBox()
         Label14 = New Label()
@@ -331,7 +331,7 @@ Partial Class Form4
         tabControlMain.Location = New Point(0, -1)
         tabControlMain.Name = "tabControlMain"
         tabControlMain.SelectedIndex = 0
-        tabControlMain.Size = New Size(1152, 751)
+        tabControlMain.Size = New Size(1152, 864)
         tabControlMain.TabIndex = 15
         ' 
         ' TabPageInventario
@@ -350,7 +350,7 @@ Partial Class Form4
         TabPageInventario.Location = New Point(4, 24)
         TabPageInventario.Name = "TabPageInventario"
         TabPageInventario.Padding = New Padding(3)
-        TabPageInventario.Size = New Size(1144, 723)
+        TabPageInventario.Size = New Size(1144, 836)
         TabPageInventario.TabIndex = 0
         TabPageInventario.Text = "INVENTARIO"
         ' 
@@ -365,7 +365,7 @@ Partial Class Form4
         TabPageVentas.Location = New Point(4, 24)
         TabPageVentas.Name = "TabPageVentas"
         TabPageVentas.Padding = New Padding(3)
-        TabPageVentas.Size = New Size(1144, 723)
+        TabPageVentas.Size = New Size(1144, 836)
         TabPageVentas.TabIndex = 1
         TabPageVentas.Text = "VENTAS"
         ' 
@@ -380,6 +380,7 @@ Partial Class Form4
         ' 
         ' GroupBox4
         ' 
+        GroupBox4.Controls.Add(tbRutVenta)
         GroupBox4.Controls.Add(Label20)
         GroupBox4.Controls.Add(Label19)
         GroupBox4.Controls.Add(Label18)
@@ -391,7 +392,6 @@ Partial Class Form4
         GroupBox4.Controls.Add(tbPrecioUnitario)
         GroupBox4.Controls.Add(btRegistrarVenta)
         GroupBox4.Controls.Add(nudCantidadVenta)
-        GroupBox4.Controls.Add(cbClienteVenta)
         GroupBox4.Controls.Add(tbStockDisponible)
         GroupBox4.Location = New Point(0, 195)
         GroupBox4.Name = "GroupBox4"
@@ -399,6 +399,13 @@ Partial Class Form4
         GroupBox4.TabIndex = 22
         GroupBox4.TabStop = False
         GroupBox4.Text = "Registrar Ventas"
+        ' 
+        ' tbRutVenta
+        ' 
+        tbRutVenta.Location = New Point(101, 288)
+        tbRutVenta.Name = "tbRutVenta"
+        tbRutVenta.Size = New Size(209, 23)
+        tbRutVenta.TabIndex = 29
         ' 
         ' Label20
         ' 
@@ -494,14 +501,6 @@ Partial Class Form4
         nudCantidadVenta.Name = "nudCantidadVenta"
         nudCantidadVenta.Size = New Size(182, 23)
         nudCantidadVenta.TabIndex = 13
-        ' 
-        ' cbClienteVenta
-        ' 
-        cbClienteVenta.FormattingEnabled = True
-        cbClienteVenta.Location = New Point(101, 288)
-        cbClienteVenta.Name = "cbClienteVenta"
-        cbClienteVenta.Size = New Size(182, 23)
-        cbClienteVenta.TabIndex = 14
         ' 
         ' tbStockDisponible
         ' 
@@ -635,7 +634,7 @@ Partial Class Form4
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoScroll = True
-        ClientSize = New Size(1151, 749)
+        ClientSize = New Size(1151, 862)
         Controls.Add(tabControlMain)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
@@ -698,7 +697,6 @@ Partial Class Form4
     Friend WithEvents tbStockDisponible As TextBox
     Friend WithEvents nudCantidadVenta As NumericUpDown
     Friend WithEvents btRegistrarVenta As Button
-    Friend WithEvents cbClienteVenta As ComboBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents tbFiltroCliente As TextBox
     Friend WithEvents tbFiltroRepuesto As TextBox
@@ -720,4 +718,5 @@ Partial Class Form4
     Friend WithEvents Label19 As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents btVolver1 As Button
+    Friend WithEvents tbRutVenta As TextBox
 End Class

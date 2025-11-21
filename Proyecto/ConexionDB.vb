@@ -4,7 +4,7 @@ Public Class ConexionDB
 
     Public Shared Function ObtenerConexion() As MySqlConnection
         Try
-            Dim con As New MySqlConnection("server=192.168.1.12; database=taller; user id=root; password=root;")
+            Dim con As New MySqlConnection("server=127.0.0.1;  port=3307;  database=taller; user id=root; password=root;")
             con.Open()
             Return con
         Catch ex As Exception
