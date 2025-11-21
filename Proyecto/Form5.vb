@@ -8,6 +8,7 @@ Public Class Form5
 
 
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = Color.Gray
         If RutPendiente IsNot Nothing Then
             TextBox1.Text = RutPendiente  'RUT
         End If

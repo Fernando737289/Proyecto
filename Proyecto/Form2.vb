@@ -37,6 +37,8 @@ Public Class Form2
     End Sub
 
     Private Sub BTNvolver_Click(sender As Object, e As EventArgs) Handles BTNvolver.Click
+        MessageBox.Show("Adiós " & CorreoUsuario, "Hasta luego", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         Dim login As New Form1()
         login.Show()
         Me.Hide()
@@ -58,4 +60,11 @@ Public Class Form2
         Me.Hide()
     End Sub
 
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim gestionSini As New Form6()
+        gestionSini.TipoUsuario = TipoUsuario
+        gestionSini.CorreoUsuario = CorreoUsuario
+        gestionSini.Show()
+        Me.Hide()
+    End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class Form5
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         TextBox1 = New TextBox()
         TextBox2 = New TextBox()
         TextBox3 = New TextBox()
@@ -185,6 +186,7 @@ Partial Class Form5
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.Control
         ClientSize = New Size(486, 611)
         Controls.Add(btCancelar)
         Controls.Add(Label8)
@@ -203,6 +205,7 @@ Partial Class Form5
         Controls.Add(TextBox3)
         Controls.Add(TextBox2)
         Controls.Add(TextBox1)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Form5"
         Text = "Form5"
         ResumeLayout(False)

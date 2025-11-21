@@ -123,9 +123,9 @@ Partial Class Form2
         ' 
         BTNvolver.Location = New Point(499, 613)
         BTNvolver.Name = "BTNvolver"
-        BTNvolver.Size = New Size(75, 23)
+        BTNvolver.Size = New Size(106, 23)
         BTNvolver.TabIndex = 2
-        BTNvolver.Text = "Volver "
+        BTNvolver.Text = "Cerrar sesion "
         BTNvolver.UseVisualStyleBackColor = True
         ' 
         ' Label1
