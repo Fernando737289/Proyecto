@@ -367,8 +367,8 @@ Public Class Form4
                     Dim nuevoID As Integer = ObtenerSiguienteVentaID()
 
                     Dim qInsert As String =
-                    "INSERT INTO ventasrepuestos (VentaID, NombreRepuesto, CantidadVendida, Cliente, FechaVenta, Total, RutIngresado) " &
-                    "VALUES (@id, @rep, @cant, @cli, @fecha, @total, @rutIngresado)"
+                    "INSERT INTO ventasrepuestos (VentaID, NombreRepuesto, CantidadVendida, Cliente, FechaVenta, Total) " &
+                    "VALUES (@id, @rep, @cant, @cli, @fecha, @total)"
 
                     Using cmdInsert As New MySqlCommand(qInsert, con, trans)
                         cmdInsert.Parameters.AddWithValue("@id", nuevoID)
@@ -377,7 +377,6 @@ Public Class Form4
                         cmdInsert.Parameters.AddWithValue("@cli", clienteParaFK)
                         cmdInsert.Parameters.AddWithValue("@fecha", fechaVenta)
                         cmdInsert.Parameters.AddWithValue("@total", total)
-                        cmdInsert.Parameters.AddWithValue("@rutIngresado", rutParaBD)
                         cmdInsert.ExecuteNonQuery()
                     End Using
 
@@ -409,7 +408,7 @@ Public Class Form4
             Dim con As MySqlConnection = ConexionDB.ObtenerConexion()
 
             Dim query As String =
-                "SELECT VentaID, NombreRepuesto, CantidadVendida, Cliente, RutIngresado, FechaVenta, Total 
+                "SELECT VentaID, NombreRepuesto, CantidadVendida, Cliente, FechaVenta, Total 
                  FROM ventasrepuestos WHERE 1=1"
 
             Dim cmd As New MySqlCommand()
@@ -457,4 +456,6 @@ Public Class Form4
         f2.Show()
         Me.Close()
     End Sub
+
+
 End Class
